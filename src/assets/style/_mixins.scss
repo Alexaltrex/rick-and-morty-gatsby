@@ -1,0 +1,43 @@
+@mixin desktop {
+  @media all and (min-width: 1140px) {
+    @content;
+  }
+}
+
+@mixin onlyMobile($displayType: block) {
+  display: $displayType;
+  @content;
+
+  @include desktop() {
+    display: none;
+  }
+}
+
+@mixin onlyDesktop($displayType: block) {
+  display: none;
+
+  @include desktop {
+    display: $displayType;
+    @content;
+  }
+}
+
+@mixin centerRow() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin centerColumn() {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin inner() {
+  @include desktop() {
+    width: 1140px;
+    margin: 0 auto;
+  }
+}
