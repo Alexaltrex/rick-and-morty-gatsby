@@ -31,7 +31,7 @@ interface ICreatePages {
 
 export const createPages = async ({graphql, actions, reporter}: ICreatePages) => {
 
-     for (let i = 1; i <= counts.characters.pages; i++) {
+    for (let i = 1; i <= counts.characters.pages; i++) {
         actions.createPage({
             path: `/characters/${i}`,
             component: path.resolve("./src/templates/Characters/Characters.tsx"),
@@ -47,15 +47,13 @@ export const createPages = async ({graphql, actions, reporter}: ICreatePages) =>
         })
     }
 
-
-        actions.createPage({
-            path: `/locations`,
-            component: path.resolve("./src/templates/Locations/Locations.tsx"),
-            context: {
-                ids: locationsIds()
-            }
-        })
-
+    actions.createPage({
+        path: `/locations`,
+        component: path.resolve("./src/templates/Locations/Locations.tsx"),
+        context: {
+            ids: locationsIds()
+        }
+    })
 
     for (let i = 1; i <= counts.locations.count; i++) {
         actions.createPage({
@@ -66,7 +64,5 @@ export const createPages = async ({graphql, actions, reporter}: ICreatePages) =>
             }
         })
     }
-
-
 
 }
