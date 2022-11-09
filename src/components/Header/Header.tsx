@@ -21,9 +21,11 @@ export const Header: FC<IHeader> = observer(({pathname}) => {
         setBurgerMenu
     } = useStore();
 
-
     return (
-        <header className={style.header}>
+        <header className={clsx({
+            [style.header]: true,
+            [style.header_showMenu]: burgerMenu,
+        })}>
             <div className={style.inner}>
                 <Link to="/"
                       className={style.logo}

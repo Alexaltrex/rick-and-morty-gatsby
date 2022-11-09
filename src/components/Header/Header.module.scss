@@ -17,6 +17,10 @@
     padding: 0 30px;
   }
 
+  &_showMenu {
+    background: #FFF;
+  }
+
   .inner {
     display: flex;
     align-items: center;
@@ -41,8 +45,15 @@
       }
 
       span {
+        @include PermanentMarker();
+        color: #ffba45;
+        font-size: 24px;
         margin-left: 8px;
-        color: #FFF;
+
+        @include desktop {
+          font-size: 28px;
+          margin-left: 16px;
+        }
       }
     }
 
@@ -83,7 +94,7 @@
       }
 
       &_showBurgerMenu {
-        ///color: #000000;
+        color: #000;
       }
     }
 

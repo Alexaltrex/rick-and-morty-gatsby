@@ -7,9 +7,9 @@ import {InfoItem} from "../../components/InfoItem/InfoItem";
 import {ListOfResidents} from "../../components/ListOfResidents/ListOfResidents";
 
 interface ILocationItem {
-    // pageContext: {
-    //     id: number
-    // }
+    pageContext: {
+        id: number
+    }
     data: {
         swapi: {
             locations: {
@@ -23,13 +23,14 @@ interface ILocationItem {
 }
 
 const LocationItem: FC<ILocationItem> = ({
-                                             //pageContext: {id},
-                                             data: {swapi: {
-                                                 locations: {
-                                                     info: {count}
-                                                 },
-                                                 location: {id, name, type, dimension, residents}
-                                             }}
+                                             data: {
+                                                 swapi: {
+                                                     locations: {
+                                                         info: {count}
+                                                     },
+                                                     location: {id, name, type, dimension, residents}
+                                                 }
+                                             }
                                          }) => {
 
     return (
@@ -73,7 +74,7 @@ export const query = graphql`
                     image
                 }
 
-            }            
+            }
         }
     }
 `

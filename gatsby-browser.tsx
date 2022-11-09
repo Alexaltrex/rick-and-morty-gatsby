@@ -5,7 +5,7 @@ import MobxWrapper from "./src/store/MobxWrapper";
 import {MainLayout} from "./src/layouts/MainLayout/MainLayout";
 
 export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = (props) => {
-    console.log(props);
+    //console.log(props);
     //console.log(props.getResourceURLsForPathname())
     const {element} = props;
     return (

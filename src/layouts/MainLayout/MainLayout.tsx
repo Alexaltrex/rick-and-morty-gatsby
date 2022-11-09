@@ -1,11 +1,11 @@
 import React, {FC, ReactNode} from "react";
 import * as style from "./MainLayout.module.scss"
 import {Header} from "../../components/Header/Header";
+import {BurgerMenu} from "../../components/BurgerMenu/BurgerMenu";
 
 interface IMainLayout {
     children: ReactNode
     pathname: string
-    //headTitle: string
 }
 
 export const MainLayout: FC<IMainLayout> = ({
@@ -16,7 +16,7 @@ export const MainLayout: FC<IMainLayout> = ({
     return (
         <div className={style.mainLayout}>
             <Header pathname={pathname}/>
-
+            <BurgerMenu pathname={pathname}/>
             <main className={style.main}>
                 {children}
             </main>

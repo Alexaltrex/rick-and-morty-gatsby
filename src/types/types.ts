@@ -43,3 +43,13 @@ export interface ILocation {
     residents: ICharacterCard[]
 }
 
+export interface IEpisode {
+    id: number
+    name: string
+    episode: string
+    air_date: string
+    characters: ICharacterCard[]
+}
+
+
+
