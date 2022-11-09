@@ -78,8 +78,6 @@ export const Head: HeadFC<any, { id: number }> = (props) => {
     )
 }
 
-
-
 export const query = graphql`
     query($id: ID!) {
         swapi {
