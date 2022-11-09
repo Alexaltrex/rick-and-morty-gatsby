@@ -7,6 +7,8 @@ import src2 from "../../assets/jpg/links/episodes.jpg";
 
 export const links = [
     {label: "characters", to: "/characters/1", slug: "characters", src: src0},
-    {label: "locations", to: "/locations/1", slug: "locations", src: src1},
+    {label: "locations", to: "/locations", slug: "locations", src: src1},
     {label: "episodes", to: "/episodes/1", slug: "episodes", src: src2},
 ]
+
+

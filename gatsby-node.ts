@@ -47,14 +47,26 @@ export const createPages = async ({graphql, actions, reporter}: ICreatePages) =>
         })
     }
 
-    for (let i = 1; i <= counts.locations.pages; i++) {
+
         actions.createPage({
-            path: `/locations/${i}`,
+            path: `/locations`,
             component: path.resolve("./src/templates/Locations/Locations.tsx"),
             context: {
                 ids: locationsIds()
             }
         })
+
+
+    for (let i = 1; i <= counts.locations.count; i++) {
+        actions.createPage({
+            path: `/location/${i}`,
+            component: path.resolve("./src/templates/LocationItem/LocationItem.tsx"),
+            context: {
+                id: i
+            }
+        })
     }
+
+
 
 }

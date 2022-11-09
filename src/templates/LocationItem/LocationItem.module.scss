@@ -1,0 +1,9 @@
+@import "../../assets/style/app";
+
+.locationItem {
+  @include inner();
+
+  .content {
+    margin-top: 20px;
+  }
+}
