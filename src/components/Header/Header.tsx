@@ -1,23 +1,21 @@
-import React from "react";
+import React, {FC} from "react";
 import * as style from "./Header.module.scss"
 import {Link} from "gatsby";
 // @ts-ignore
 import logo from "../../assets/png/gatsby.png";
 import {observer} from "mobx-react-lite";
-import {useStore} from "../store/useStore";
+import {useStore} from "../../store/useStore";
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import {IconButton} from "@mui/material";
 import clsx from "clsx";
+import {links} from "./links";
 
-const links = [
-    {label: "characters", to: "/characters/1"},
-    {label: "locations", to: "/locations/1"},
-    {label: "episodes", to: "/episodes/1"},
-]
+interface IHeader {
+    pathname: string
+}
 
-
-export const Header = observer(() => {
+export const Header: FC<IHeader> = observer(({pathname}) => {
     const {
         burgerMenu,
         setBurgerMenu
@@ -36,10 +34,13 @@ export const Header = observer(() => {
 
                 <nav className={style.links}>
                     {
-                        links.map(({label, to}, index) => (
+                        links.map(({label, to, slug}, index) => (
                             <Link key={index}
-                                  className={style.link}
                                   to={to}
+                                  className={clsx({
+                                      [style.link]: true,
+                                      [style.link_active]: pathname.includes(slug),
+                                  })}
                             >
                                 {label}
                             </Link>

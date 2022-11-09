@@ -15,6 +15,13 @@ const counts = {
     },
 }
 
+const locationsIds = (): number[] => {
+    const ret = [] as number[];
+    for (let i = 1; i <= counts.locations.count; i++) {
+        ret.push(i);
+    }
+    return ret
+}
 
 interface ICreatePages {
     graphql: any
@@ -32,12 +39,22 @@ export const createPages = async ({graphql, actions, reporter}: ICreatePages) =>
         })
     }
 
-    // for (let i = 1; i <= 42; i++) {
-    //     actions.createPage({
-    //         path: `/characters/${i}`,
-    //         component: path.resolve("./src/components/characterItem.tsx"),
-    //         context: {id: i}
-    //     })
-    // }
+    for (let i = 1; i <= counts.characters.count; i++) {
+        actions.createPage({
+            path: `/character/${i}`,
+            component: path.resolve("./src/templates/CharacterItem/CharacterItem.tsx"),
+            context: {id: i}
+        })
+    }
+
+    for (let i = 1; i <= counts.locations.pages; i++) {
+        actions.createPage({
+            path: `/locations/${i}`,
+            component: path.resolve("./src/templates/Locations/Locations.tsx"),
+            context: {
+                ids: locationsIds()
+            }
+        })
+    }
 
 }

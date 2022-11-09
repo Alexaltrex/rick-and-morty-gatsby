@@ -22,6 +22,7 @@
     "@mui/material": "^5.10.12",
     "clsx": "^1.2.1",
     "gatsby": "^4.24.7",
+    "gatsby-omni-font-loader": "^2.0.2",
     "gatsby-plugin-sass": "^5.24.0",
     "gatsby-source-graphql": "^4.24.0",
     "mobx": "^6.6.2",

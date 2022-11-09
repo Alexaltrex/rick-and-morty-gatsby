@@ -1,5 +1,5 @@
 import {GatsbyBrowser} from "gatsby";
-import MobxWrapper from "./src/components/store/MobxWrapper";
+import MobxWrapper from "./src/store/MobxWrapper";
 import * as React from "react";
 
 export const wrapRootElement: GatsbyBrowser["wrapRootElement"] = (props) => {

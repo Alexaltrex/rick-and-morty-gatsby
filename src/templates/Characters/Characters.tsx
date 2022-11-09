@@ -1,11 +1,12 @@
 import React, {FC} from "react";
-import {MainLayout} from "../../layouts/MainLayout/MainLayout";
 import {graphql, HeadFC} from "gatsby";
 import {Seo} from "../../components/Seo/Seo";
 import {TitleBlock} from "../../components/Title/Title";
 import * as style from "./Characters.module.scss"
 import {Pagination} from "@mui/material";
-import { navigate } from "gatsby"
+import {navigate} from "gatsby";
+import {ICharacterCard} from "../../types/types";
+import {CharacterCard} from "../../components/CharacterCard/CharacterCard";
 
 interface ICharactersPage {
     pageContext: {
@@ -18,10 +19,7 @@ interface ICharactersPage {
                     count: number
                     pages: number
                 }
-                results: {
-                    id: string
-                    name: string
-                }[]
+                results: ICharacterCard[]
             }
         }
     }
@@ -29,16 +27,12 @@ interface ICharactersPage {
 
 const Characters: FC<ICharactersPage> = ({
                                              pageContext,
-    data
+                                             data
                                          }) => {
-
-    console.log(data)
-
     const onChangeHandler = (event: React.ChangeEvent<unknown>, page: number) => {
         navigate(`/characters/${page}`)
     }
     return (
-        <MainLayout>
             <div className={style.characters}>
                 <TitleBlock title="characters"/>
 
@@ -46,7 +40,6 @@ const Characters: FC<ICharactersPage> = ({
                             size="small"
                             shape="rounded"
                             count={data.swapi.characters.info.pages}
-                            //page={currentPage}
                             page={pageContext.page}
                             showFirstButton
                             showLastButton
@@ -59,23 +52,30 @@ const Characters: FC<ICharactersPage> = ({
                                 }
                             }}
                 />
+
+                <div className={style.cards}>
+                    {
+                        data.swapi.characters.results.map((character) => (
+                            <CharacterCard key={character.id} {...character}/>
+                        ))
+                    }
+                </div>
             </div>
-        </MainLayout>
     )
 }
 
-export default Characters
+export default Characters;
 
-export const Head: HeadFC<any, {page: number}> = (props) => {
+export const Head: HeadFC<any, { page: number }> = (props) => {
     return (
         <Seo title={`Characters | Page ${props.pageContext.page}`}/>
     )
 }
 
 export const query = graphql`
-    query {
+    query($page: Int) {
         swapi {
-            characters {
+            characters(page: $page) {
                 info {
                     count
                     pages
@@ -83,6 +83,7 @@ export const query = graphql`
                 results {
                     id
                     name
+                    image
                 }
             }
         }
