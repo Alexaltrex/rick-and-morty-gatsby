@@ -70,6 +70,7 @@ const CharacterItem: FC<ICharacterItem> = ({
             </div>
     )
 }
+
 export default CharacterItem;
 
 export const Head: HeadFC<any, { id: number }> = (props) => {
