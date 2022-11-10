@@ -1,0 +1,27 @@
+@import "../assets/style/app";
+
+.notFound {
+  @include centerColumn;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      @include PermanentMarker;
+      font-weight: bold;
+      margin-top: 28px;
+      color: red;
+      text-align: center;
+    }
+
+    a {
+      @include PermanentMarker;
+      margin-top: 10px;
+      //text-decoration: none;
+      color: darkorchid;
+      font-size: 20px;
+    }
+  }
+}
